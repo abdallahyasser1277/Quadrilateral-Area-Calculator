@@ -59,7 +59,7 @@ fun TriangleAreaCalculator() {
         )
 
         Button(
-            shape = RoundedCornerShape(8.dp),
+            shape = RoundedCornerShape(12.dp),
             onClick = { area=calculateArea(sideA, sideB, sideC) },
             modifier = Modifier.fillMaxWidth()
         ) {
