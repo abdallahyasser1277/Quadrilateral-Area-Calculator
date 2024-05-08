@@ -1,4 +1,4 @@
-package com.abdallahyasser.areacalculator
+package com.abdallahyasser.areacalculator.histroy
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize

@@ -105,22 +105,27 @@ fun PreviewQuadrilateralAreaCalculator() {
 }
 
 private fun calculateArea(sideA: String, sideB: String, sideH: String, sideD: String, sideG: String):String {
-    val a = sideA.toFloatOrNull()
-    val b = sideB.toFloatOrNull()
-    val h = sideH.toFloatOrNull()
-    val d = sideD.toFloatOrNull()
-    val g = sideG.toFloatOrNull()
+    val quadrilater=Quadrilater(
+        sideA.toFloatOrNull(),
+        sideB.toFloatOrNull(),
+        sideH.toFloatOrNull(),
+        sideD.toFloatOrNull(),
+        sideG.toFloatOrNull(),
+        .0)
 
-    if (a != null && b != null && h != null && d != null && g != null) {
-        val s1 = (a + b + g) / 2
-        val area1 = sqrt((s1 * (s1 - a) * (s1 - b) * (s1 - g)).toDouble())
-        val s2 = (h + d + g) / 2
-        val area2 = sqrt((s2 * (s2 - h) * (s2 - d) * (s2 - g)).toDouble())
-        val area = area1 + area2
-        // Update the area state variable
-        if (area1.toString()=="NaN" || area2.toString()=="NaN")
-            return "Error:\n اطوال الاضلاع غير منطقية"
-        return area.toString()
+    with(quadrilater) {
+        if (a != null && b != null && h != null && d != null && g != null) {
+            val s1 = (a + b + g) / 2
+            val area1 = sqrt((s1 * (s1 - a) * (s1 - b) * (s1 - g)).toDouble())
+            val s2 = (h + d + g) / 2
+            val area2 = sqrt((s2 * (s2 - h) * (s2 - d) * (s2 - g)).toDouble())
+            area = area1 + area2
+            // Update the area state variable
+            if (area1.toString()=="NaN" || area2.toString()=="NaN")
+                return "Error:\n اطوال الاضلاع غير منطقية"
+            return area.toString()
+        }
     }
+
     return "Error:\n يجب ان تكون المدخلات ارقام انجليزية "
 }

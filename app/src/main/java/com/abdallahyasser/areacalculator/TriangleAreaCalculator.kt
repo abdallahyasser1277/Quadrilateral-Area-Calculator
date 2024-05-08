@@ -85,17 +85,21 @@ fun PreviewTriangleAreaCalculator() {
 }
 
 private fun calculateArea(sideA: String, sideB: String, sideC: String):String {
-    val a = sideA.toFloatOrNull()
-    val b = sideB.toFloatOrNull()
-    val c = sideC.toFloatOrNull()
-
-    if (a != null && b != null && c != null) {
-        val s = (a + b + c) / 2
-        val area = sqrt((s * (s - a) * (s - b) * (s - c)).toDouble())
-        // Update the area state variable
-        if (area.toString()=="NaN")
-            return "Error:\n اطوال الاضلاع غير منطقية"
-        return area.toString()
+    val trianglee=Trianglee(
+        sideA.toFloatOrNull(),
+        sideB.toFloatOrNull(),
+        sideC.toFloatOrNull(),
+        0.0)
+    with(trianglee) {
+        if (a != null && b != null && c != null) {
+            val s = (a + b + c) / 2
+            area = sqrt((s * (s - a) * (s - b) * (s - c)).toDouble())
+            // Update the area state variable
+            if (area.toString()=="NaN")
+                return "Error:\n اطوال الاضلاع غير منطقية"
+            return area.toString()
+        }
     }
+
     return "Error:\n يجب ان تكون المدخلات ارقام انجليزية "
 }
