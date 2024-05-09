@@ -1,6 +1,6 @@
 package com.abdallahyasser.areacalculator
 
-data class Trianglee(
+data class Traingle(
     val a:Float?,
     val b:Float?,
     val c:Float?,

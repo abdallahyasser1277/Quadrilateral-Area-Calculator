@@ -4,7 +4,6 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
@@ -19,13 +18,14 @@ import androidx.compose.ui.unit.*
 import kotlin.math.sqrt
 
 @Composable
-fun QuadrilateralAreaCalculator() {
-    var sideA by remember { mutableStateOf("") }
-    var sideB by remember { mutableStateOf("") }
-    var sideH by remember { mutableStateOf("") }
-    var sideD by remember { mutableStateOf("") }
-    var sideG by remember { mutableStateOf("") }
-    var result: String by remember { mutableStateOf("") }
+fun QuadrilateralAreaCalculator(quadrilater:Quadrilater) {
+
+    var sideA by remember { mutableStateOf(quadrilater.a.toString()) }
+    var sideB by remember { mutableStateOf(quadrilater.b.toString()) }
+    var sideH by remember { mutableStateOf(quadrilater.h.toString()) }
+    var sideD by remember { mutableStateOf(quadrilater.d.toString()) }
+    var sideG by remember { mutableStateOf(quadrilater.g.toString()) }
+    var result: String by remember { mutableStateOf(quadrilater.area.toString()) }
 
     Column(
         modifier = Modifier.padding(16.dp),
@@ -96,12 +96,6 @@ fun QuadrilateralAreaCalculator() {
             style = MaterialTheme.typography.headlineLarge
         )
     }
-}
-
-@Preview
-@Composable
-fun PreviewQuadrilateralAreaCalculator() {
-    QuadrilateralAreaCalculator()
 }
 
 private fun calculateArea(sideA: String, sideB: String, sideH: String, sideD: String, sideG: String):String {

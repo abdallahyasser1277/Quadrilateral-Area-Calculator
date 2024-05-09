@@ -47,14 +47,17 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun MyApp(){
     val navController = rememberNavController()
-    Scaffold(bottomBar = { MyBottomNavigation(navController = navController) }) {
+    val quadrilater=Quadrilater(4f,4f,4f,4f,5f,.0)
+    val triangle=Traingle(3f,4f,5f,0.0)
+    Scaffold(bottomBar = {
+        MyBottomNavigation(navController = navController) }) {
         Box(modifier = Modifier.padding(it)){
             NavHost(navController = navController, startDestination = Quadrilateral.route) {
                 composable(Quadrilateral.route){
-                    QuadrilateralAreaCalculator()
+                    QuadrilateralAreaCalculator(quadrilater)
                 }
                 composable(Triangle.route){
-                    TriangleAreaCalculator()
+                    TriangleAreaCalculator(triangle)
                 }
                 composable(History.route){
                     HistoryScreen()

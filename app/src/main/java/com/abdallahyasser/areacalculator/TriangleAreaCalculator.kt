@@ -18,11 +18,12 @@ import androidx.compose.ui.unit.*
 import kotlin.math.sqrt
 
 @Composable
-fun TriangleAreaCalculator() {
-    var sideA by remember { mutableStateOf("") }
-    var sideB by remember { mutableStateOf("") }
-    var sideC by remember { mutableStateOf("") }
-    var area by remember { mutableStateOf("") }
+fun TriangleAreaCalculator(triangle:Traingle) {
+
+    var sideA by remember { mutableStateOf(triangle.a.toString()) }
+    var sideB by remember { mutableStateOf(triangle.b.toString()) }
+    var sideC by remember { mutableStateOf(triangle.c.toString()) }
+    var area by remember { mutableStateOf(triangle.area.toString()) }
 
     Column(
         modifier = Modifier.padding(16.dp),
@@ -78,19 +79,14 @@ fun TriangleAreaCalculator() {
     }
 }
 
-@Preview
-@Composable
-fun PreviewTriangleAreaCalculator() {
-    TriangleAreaCalculator()
-}
-
 private fun calculateArea(sideA: String, sideB: String, sideC: String):String {
-    val trianglee=Trianglee(
+    val triangle= Traingle(
         sideA.toFloatOrNull(),
         sideB.toFloatOrNull(),
         sideC.toFloatOrNull(),
-        0.0)
-    with(trianglee) {
+        0.0
+    )
+    with(triangle) {
         if (a != null && b != null && c != null) {
             val s = (a + b + c) / 2
             area = sqrt((s * (s - a) * (s - b) * (s - c)).toDouble())
