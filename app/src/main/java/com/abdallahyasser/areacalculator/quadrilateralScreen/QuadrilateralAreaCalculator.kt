@@ -1,4 +1,4 @@
-package com.abdallahyasser.areacalculator
+package com.abdallahyasser.areacalculator.quadrilateralScreen
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -13,12 +13,15 @@ import androidx.compose.ui.*
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.*
-import kotlin.math.sqrt
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.abdallahyasser.areacalculator.R
 
 @Composable
-fun QuadrilateralAreaCalculator(quadrilater:Quadrilater) {
+fun QuadrilateralAreaCalculator() {
+
+    val vM:QuadrilaterVM=viewModel()
+    var quadrilater=vM.getLastItem()
 
     var sideA by remember { mutableStateOf(quadrilater.a.toString()) }
     var sideB by remember { mutableStateOf(quadrilater.b.toString()) }
@@ -79,7 +82,22 @@ fun QuadrilateralAreaCalculator(quadrilater:Quadrilater) {
 
         Button(
             shape = RoundedCornerShape(8.dp),
-            onClick = { result=calculateArea(sideA, sideB, sideH, sideD, sideG) },
+            onClick = {
+                quadrilater= Quadrilater(
+                    sideA.toFloatOrNull(),
+                    sideB.toFloatOrNull(),
+                    sideH.toFloatOrNull(),
+                    sideD.toFloatOrNull(),
+                    sideG.toFloatOrNull(),
+                    .0)
+
+                result=quadrilater.calculateArea()
+
+                if(result[0]!= 'E'){
+                    vM.saveCalculation(quadrilater)
+                }
+
+            },
             modifier = Modifier
                 .fillMaxWidth()
         ) {
@@ -96,30 +114,4 @@ fun QuadrilateralAreaCalculator(quadrilater:Quadrilater) {
             style = MaterialTheme.typography.headlineLarge
         )
     }
-}
-
-private fun calculateArea(sideA: String, sideB: String, sideH: String, sideD: String, sideG: String):String {
-    val quadrilater=Quadrilater(
-        sideA.toFloatOrNull(),
-        sideB.toFloatOrNull(),
-        sideH.toFloatOrNull(),
-        sideD.toFloatOrNull(),
-        sideG.toFloatOrNull(),
-        .0)
-
-    with(quadrilater) {
-        if (a != null && b != null && h != null && d != null && g != null) {
-            val s1 = (a + b + g) / 2
-            val area1 = sqrt((s1 * (s1 - a) * (s1 - b) * (s1 - g)).toDouble())
-            val s2 = (h + d + g) / 2
-            val area2 = sqrt((s2 * (s2 - h) * (s2 - d) * (s2 - g)).toDouble())
-            area = area1 + area2
-            // Update the area state variable
-            if (area1.toString()=="NaN" || area2.toString()=="NaN")
-                return "Error:\n اطوال الاضلاع غير منطقية"
-            return area.toString()
-        }
-    }
-
-    return "Error:\n يجب ان تكون المدخلات ارقام انجليزية "
 }

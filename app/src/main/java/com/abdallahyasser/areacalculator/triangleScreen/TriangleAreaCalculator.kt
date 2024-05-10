@@ -1,4 +1,4 @@
-package com.abdallahyasser.areacalculator
+package com.abdallahyasser.areacalculator.triangleScreen
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -13,17 +13,21 @@ import androidx.compose.ui.*
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.*
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.abdallahyasser.areacalculator.R
 import kotlin.math.sqrt
 
 @Composable
-fun TriangleAreaCalculator(triangle:Traingle) {
+fun TriangleAreaCalculator() {
+
+    val vM:TriangleVM= viewModel()
+    var triangle:Traingle=vM.getLastItem()
 
     var sideA by remember { mutableStateOf(triangle.a.toString()) }
     var sideB by remember { mutableStateOf(triangle.b.toString()) }
     var sideC by remember { mutableStateOf(triangle.c.toString()) }
-    var area by remember { mutableStateOf(triangle.area.toString()) }
+    var result by remember { mutableStateOf(triangle.area.toString()) }
 
     Column(
         modifier = Modifier.padding(16.dp),
@@ -61,7 +65,20 @@ fun TriangleAreaCalculator(triangle:Traingle) {
 
         Button(
             shape = RoundedCornerShape(12.dp),
-            onClick = { area=calculateArea(sideA, sideB, sideC) },
+            onClick = {
+
+                triangle= Traingle(
+                    sideA.toFloatOrNull(),
+                    sideB.toFloatOrNull(),
+                    sideC.toFloatOrNull(),
+                    0.0
+                )
+                result= triangle.calculateArea()
+
+                if(result[0]!= 'E'){
+                    vM.saveCalculation(triangle)
+                }
+                      },
             modifier = Modifier.fillMaxWidth()
         ) {
             Text("Calculate Area")
@@ -73,7 +90,7 @@ fun TriangleAreaCalculator(triangle:Traingle) {
             style = MaterialTheme.typography.headlineSmall
         )
         Text(
-            text = area,
+            text = result,
             style = MaterialTheme.typography.headlineLarge
         )
     }

@@ -23,6 +23,10 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.abdallahyasser.areacalculator.about.AboutScreen
 import com.abdallahyasser.areacalculator.histroy.HistoryScreen
+import com.abdallahyasser.areacalculator.quadrilateralScreen.Quadrilater
+import com.abdallahyasser.areacalculator.quadrilateralScreen.QuadrilateralAreaCalculator
+import com.abdallahyasser.areacalculator.triangleScreen.Traingle
+import com.abdallahyasser.areacalculator.triangleScreen.TriangleAreaCalculator
 import com.abdallahyasser.areacalculator.ui.theme.AreaCalculatorTheme
 
 
@@ -47,17 +51,15 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun MyApp(){
     val navController = rememberNavController()
-    val quadrilater=Quadrilater(4f,4f,4f,4f,5f,.0)
-    val triangle=Traingle(3f,4f,5f,0.0)
     Scaffold(bottomBar = {
         MyBottomNavigation(navController = navController) }) {
         Box(modifier = Modifier.padding(it)){
             NavHost(navController = navController, startDestination = Quadrilateral.route) {
                 composable(Quadrilateral.route){
-                    QuadrilateralAreaCalculator(quadrilater)
+                    QuadrilateralAreaCalculator()
                 }
                 composable(Triangle.route){
-                    TriangleAreaCalculator(triangle)
+                    TriangleAreaCalculator()
                 }
                 composable(History.route){
                     HistoryScreen()
