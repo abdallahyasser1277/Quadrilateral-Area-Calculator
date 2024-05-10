@@ -21,11 +21,9 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.abdallahyasser.areacalculator.about.AboutScreen
-import com.abdallahyasser.areacalculator.histroy.HistoryScreen
-import com.abdallahyasser.areacalculator.quadrilateralScreen.Quadrilater
+import com.abdallahyasser.areacalculator.aboutScreen.AboutScreen
+import com.abdallahyasser.areacalculator.histroyScreen.HistoryScreen
 import com.abdallahyasser.areacalculator.quadrilateralScreen.QuadrilateralAreaCalculator
-import com.abdallahyasser.areacalculator.triangleScreen.Traingle
 import com.abdallahyasser.areacalculator.triangleScreen.TriangleAreaCalculator
 import com.abdallahyasser.areacalculator.ui.theme.AreaCalculatorTheme
 
