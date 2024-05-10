@@ -15,3 +15,7 @@ fun HistoryScreen(){
         Text(text = "History Screen")
     }
 }
+@Composable
+fun CardItem(){
+
+}
