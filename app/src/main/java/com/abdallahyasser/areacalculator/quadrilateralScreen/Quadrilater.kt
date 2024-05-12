@@ -1,10 +1,15 @@
 package com.abdallahyasser.areacalculator.quadrilateralScreen
 
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.abdallahyasser.areacalculator.ui.theme.Values.Companion.sdf
 import java.util.Date
 import kotlin.math.sqrt
-
+@Entity
 data class Quadrilater(
+    @PrimaryKey(autoGenerate = true)
+    val id :Int=0,
     val a: Float?,
     val b: Float?,
     val h: Float?,
