@@ -36,7 +36,7 @@ fun ItemCard(){
 
             ) {
                 Icon(
-                    painterResource(id = if(s is Quadrilater){R.drawable.rectangle}else{R.drawable.triangle}),
+                    painterResource(id = R.drawable.rectangle),
                     contentDescription ="",
                     modifier = Modifier
                         .aspectRatio(1f)
