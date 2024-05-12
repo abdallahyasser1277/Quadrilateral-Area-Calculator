@@ -135,7 +135,5 @@ fun ItemCard(s :Traingle){
             Text(text = "demo note demo note demo note demo note",
                 modifier = Modifier.padding(8.dp))
         }
-
     }
-
 }
