@@ -1,5 +1,7 @@
 package com.abdallahyasser.areacalculator.quadrilateralScreen
 
+import com.abdallahyasser.areacalculator.ui.theme.Values.Companion.sdf
+import java.util.Date
 import kotlin.math.sqrt
 
 data class Quadrilater(
@@ -9,7 +11,8 @@ data class Quadrilater(
     val d: Float?,
     val g: Float?,
     var area: Double?,
-    var note: String = ""
+    var note: String = "",
+    var date :String?=""
 ){
     fun calculateArea():String{
         if (a != null && b != null && h != null && d != null && g != null) {
@@ -21,7 +24,9 @@ data class Quadrilater(
             // Update the area state variable
             if (area1.toString()=="NaN" || area2.toString()=="NaN")
                 return "Error:\n اطوال الاضلاع غير منطقية"
+            date = sdf.format(Date())
             return area.toString()
+
         }
     return "Error:\n يجب ان تكون المدخلات ارقام انجليزية "
     }
