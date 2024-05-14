@@ -4,10 +4,10 @@ import androidx.lifecycle.ViewModel
 
 class TriangleVM:ViewModel() {
     private var list= listOf(
-        Traingle(null,null,null,null),
-        Traingle(null,null,null,null),
-        Traingle(null,null,null,null),
-        Traingle(1f,1f,1f,null),
+        Traingle(0,null,null,null,null),
+        Traingle(1,null,null,null,null),
+        Traingle(2,null,null,null,null),
+        Traingle(2  ,1f,1f,1f,null),
 
     )
 

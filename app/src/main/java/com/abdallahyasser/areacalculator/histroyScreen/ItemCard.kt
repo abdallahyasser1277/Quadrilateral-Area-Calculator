@@ -25,7 +25,7 @@ import com.abdallahyasser.areacalculator.triangleScreen.Traingle
 @Preview
 @Composable
 fun ItemCard(){
-    val s=Quadrilater(2f,3f,2f,2f,2f,null)
+    val s=Quadrilater(2,2f,3f,2f,2f,2f,null)
     s.calculateArea()
     Card {
         Column {

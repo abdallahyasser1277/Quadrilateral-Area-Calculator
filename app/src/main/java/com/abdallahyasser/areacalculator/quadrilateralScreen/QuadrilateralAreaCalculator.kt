@@ -84,12 +84,12 @@ fun QuadrilateralAreaCalculator() {
             shape = RoundedCornerShape(8.dp),
             onClick = {
                 quadrilater= Quadrilater(
-                    sideA.toFloatOrNull(),
-                    sideB.toFloatOrNull(),
-                    sideH.toFloatOrNull(),
-                    sideD.toFloatOrNull(),
-                    sideG.toFloatOrNull(),
-                    .0)
+                    a=sideA.toFloatOrNull(),
+                    b=sideB.toFloatOrNull(),
+                    h=sideH.toFloatOrNull(),
+                    d=sideD.toFloatOrNull(),
+                    g=sideG.toFloatOrNull(),
+                    area = .0)
 
                 result=quadrilater.calculateArea()
 

@@ -68,10 +68,10 @@ fun TriangleAreaCalculator() {
             onClick = {
 
                 triangle= Traingle(
-                    sideA.toFloatOrNull(),
-                    sideB.toFloatOrNull(),
-                    sideC.toFloatOrNull(),
-                    0.0
+                    a=sideA.toFloatOrNull(),
+                    b=sideB.toFloatOrNull(),
+                    c=sideC.toFloatOrNull(),
+                    area = 0.0
                 )
                 result= triangle.calculateArea()
 
@@ -98,10 +98,10 @@ fun TriangleAreaCalculator() {
 
 private fun calculateArea(sideA: String, sideB: String, sideC: String):String {
     val triangle= Traingle(
-        sideA.toFloatOrNull(),
-        sideB.toFloatOrNull(),
-        sideC.toFloatOrNull(),
-        0.0
+        a=sideA.toFloatOrNull(),
+        b=sideB.toFloatOrNull(),
+        c=sideC.toFloatOrNull(),
+        area = 0.0
     )
     with(triangle) {
         if (a != null && b != null && c != null) {
