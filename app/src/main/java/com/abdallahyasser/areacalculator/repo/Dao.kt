@@ -14,24 +14,30 @@ interface Dao {
     @Query("SELECT * FROM Traingle")
     suspend fun getAll() :List<Traingle>
 
-    @Update
+    @Query("SELECT * FROM Traingle ORDER BY ID DESC LIMIT 1")
+    suspend fun getLastTraingle():Traingle
+
+    @Query("SELECT * FROM Quadrilater ORDER BY ID DESC LIMIT 1")
+    suspend fun getLastQuadrilater():Quadrilater
+
+    @Update(entity = Traingle::class)
     suspend fun update(t: Traingle)
 
-    @Delete
+    @Delete(entity = Traingle::class)
     suspend fun delete(t: Traingle)
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert(entity = Traingle::class, onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(t: Traingle)
     @Query("SELECT * FROM quadrilater")
     suspend fun getAllQuadrilaters() :List<Quadrilater>
 
-    @Update
+    @Update(entity = Quadrilater::class)
     suspend fun update(q: Quadrilater)
 
-    @Delete
+    @Delete(entity = Quadrilater::class)
     suspend fun delete(q: Quadrilater)
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert(entity = Quadrilater::class,onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(q: Quadrilater)
 
 }

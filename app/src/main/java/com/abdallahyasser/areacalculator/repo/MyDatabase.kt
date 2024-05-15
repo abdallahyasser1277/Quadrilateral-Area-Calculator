@@ -5,13 +5,11 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.abdallahyasser.areacalculator.quadrilateralScreen.Quadrilater
-import com.abdallahyasser.areacalculator.quadrilateralScreen.QuadrilaterDAO
 import com.abdallahyasser.areacalculator.triangleScreen.Traingle
-import com.abdallahyasser.areacalculator.triangleScreen.TraingleDAO
 
 @Database(
     entities = [Quadrilater::class,Traingle::class],
-    version = 1,
+    version = 2,
     exportSchema = false
 )
 abstract class MyDatabase:RoomDatabase(){

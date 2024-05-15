@@ -30,14 +30,15 @@ import com.abdallahyasser.areacalculator.ui.theme.Purple40
 
 @Composable
 fun HistoryScreen() {
-    val vM: HistroyVM = viewModel()
+    val vM: HistoryVM = viewModel()
+    vM.reload()
     var isTraingleOrQuadrilater by remember {
-        mutableStateOf(vM.isTraingleOrQuadrilater)
+        mutableStateOf(vM.isTriangleOrQuadrilateral)
     }
     Column(modifier = Modifier.fillMaxSize()) {
 
         LazyColumn(modifier = Modifier.weight(0.9f)) {
-            items(if(isTraingleOrQuadrilater){vM.list2}else{vM.list}){
+            items(if(isTraingleOrQuadrilater){vM.tList}else{vM.qList}){
                 if(it is Traingle)ItemCard(it)
                 if (it is Quadrilater) ItemCard(it)
             }

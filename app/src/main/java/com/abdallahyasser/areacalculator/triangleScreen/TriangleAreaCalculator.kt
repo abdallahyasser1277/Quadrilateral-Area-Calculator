@@ -95,24 +95,3 @@ fun TriangleAreaCalculator() {
         )
     }
 }
-
-private fun calculateArea(sideA: String, sideB: String, sideC: String):String {
-    val triangle= Traingle(
-        a=sideA.toFloatOrNull(),
-        b=sideB.toFloatOrNull(),
-        c=sideC.toFloatOrNull(),
-        area = 0.0
-    )
-    with(triangle) {
-        if (a != null && b != null && c != null) {
-            val s = (a + b + c) / 2
-            area = sqrt((s * (s - a) * (s - b) * (s - c)).toDouble())
-            // Update the area state variable
-            if (area.toString()=="NaN")
-                return "Error:\n اطوال الاضلاع غير منطقية"
-            return area.toString()
-        }
-    }
-
-    return "Error:\n يجب ان تكون المدخلات ارقام انجليزية "
-}

@@ -23,12 +23,12 @@ fun QuadrilateralAreaCalculator() {
     val vM:QuadrilaterVM=viewModel()
     var quadrilater=vM.getLastItem()
 
-    var sideA by remember { mutableStateOf(quadrilater.a.toString()) }
-    var sideB by remember { mutableStateOf(quadrilater.b.toString()) }
-    var sideH by remember { mutableStateOf(quadrilater.h.toString()) }
-    var sideD by remember { mutableStateOf(quadrilater.d.toString()) }
-    var sideG by remember { mutableStateOf(quadrilater.g.toString()) }
-    var result: String by remember { mutableStateOf(quadrilater.area.toString()) }
+    var sideA by remember { mutableStateOf(vM.quad.a.toString()) }
+    var sideB by remember { mutableStateOf(vM.quad.b.toString()) }
+    var sideH by remember { mutableStateOf(vM.quad.h.toString()) }
+    var sideD by remember { mutableStateOf(vM.quad.d.toString()) }
+    var sideG by remember { mutableStateOf(vM.quad.g.toString()) }
+    var result: String by remember { mutableStateOf(vM.quad.area.toString()) }
 
     Column(
         modifier = Modifier.padding(16.dp),
@@ -45,14 +45,14 @@ fun QuadrilateralAreaCalculator() {
         Row {
             OutlinedTextField(
                 value = sideA,
-                onValueChange = { sideA = it },
+                onValueChange = {sideA= it },
                 modifier = Modifier.fillMaxWidth(0.48f),
                 label = { Text("الضلع أ") }
             )
             Spacer(modifier = Modifier.fillMaxWidth(0.04f))
             OutlinedTextField(
                 value = sideB,
-                onValueChange = { sideB = it },
+                onValueChange = {sideB= it },
                 modifier = Modifier.fillMaxWidth(),
                 label = { Text("الضلع ب") }
             )
@@ -60,14 +60,14 @@ fun QuadrilateralAreaCalculator() {
         Row {
             OutlinedTextField(
                 value = sideH,
-                onValueChange = { sideH = it },
+                onValueChange = {sideH= it },
                 modifier = Modifier.fillMaxWidth(0.48f),
                 label = { Text("الضلع هـ") }
             )
             Spacer(modifier = Modifier.fillMaxWidth(0.04f))
             OutlinedTextField(
                 value = sideD,
-                onValueChange = { sideD = it },
+                onValueChange = {sideD= it },
                 modifier = Modifier.fillMaxWidth(),
                 label = { Text("الضلع د") }
             )
@@ -75,7 +75,7 @@ fun QuadrilateralAreaCalculator() {
 
         OutlinedTextField(
             value = sideG,
-            onValueChange = { sideG = it },
+            onValueChange = {sideG= it },
             modifier = Modifier.fillMaxWidth(),
             label = { Text("الوتر جـ") }
         )
